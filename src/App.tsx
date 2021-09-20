@@ -31,7 +31,7 @@ import UsersList from './pages/admin/UsersList';
 import UpdateUser from './pages/admin/UpdateUser';
 import ReviewsList from './pages/admin/ReviewsList';
 
-Axios.defaults.baseURL = process.env.URL || 'http://localhost:4000/api'
+Axios.defaults.baseURL = process.env.URL || "https://shopit--api.herokuapp.com/api"
 Axios.defaults.withCredentials = true
 
 const fetcher = async (url: string) => {
