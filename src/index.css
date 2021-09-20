@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.chakra-link:hover {
+  color: "#2C7A7B" !important
+}
+
+.page-item.active .page-link {
+  background-color: #FF6347;
+  border-color: #2c7a7b;
+}
+
+.page-link {
+  color: #2c7a7b;
+}
+
+.page-link:hover {
+  color: #2c7a7b;
+}
+
+.step {
+  width: 40px;
+  height: 40px;
+  background-color: #2c7a7b;
+  border-radius: 50%;
+}
