@@ -54,7 +54,7 @@ const Home = ({ match }) => {
     
 	useEffect(()=>{
 		revalidate()
-		//eslint-disable next line
+		// eslint-disable-next-line
 	},[])
 	if (!success && isValidating) {
         return <Center my='20'>

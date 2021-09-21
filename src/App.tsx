@@ -54,7 +54,9 @@ function App() {
 
         }
     }
-    useEffect(() => { getStripeApiKey() }, [])
+    useEffect(() => { getStripeApiKey() },
+// eslint-disable-next-line
+	[])
 
     return (
         <SWRConfig
