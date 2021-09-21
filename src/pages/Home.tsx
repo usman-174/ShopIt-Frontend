@@ -51,15 +51,16 @@ const Home = ({ match }) => {
     if (keyword) {
         count = filteredProductsCount
     }
-    if (!success && isValidating) {
-        return <Center my='20'>
-            <MoonLoader color='#FF6347' />
-        </Center>
-    }
+    
 	useEffect(()=>{
 		revalidate()
 		//eslint-disable next line
 	},[])
+	if (!success && isValidating) {
+        return <Center my='20'>
+            <MoonLoader color='#FF6347' />
+        </Center>
+    }
     return (
 
         <Flex justifyContent='flex-start' flexDirection='column' mx='10' my='2' mb='10'>
