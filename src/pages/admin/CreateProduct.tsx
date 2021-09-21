@@ -217,7 +217,8 @@ const CreateProduct = () => {
 
                         <FormControl id="description">
                             <FormLabel>Description</FormLabel>
-                            <Textarea value={description} onChange={e => setDescription(e.target.value)} minLength={25} type="text" placeholder="Description..." />
+                            <Textarea value={description} onChange={e => setDescription(e.target.value)}
+                                minLength={25} type="text" placeholder="Description..." />
                         </FormControl>
                         <FormControl id="Images">
                             <FormLabel>Choose Images</FormLabel>

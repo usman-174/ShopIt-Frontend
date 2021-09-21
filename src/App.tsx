@@ -55,8 +55,8 @@ function App() {
         }
     }
     useEffect(() => { getStripeApiKey() },
-// eslint-disable-next-line
-	[])
+        // eslint-disable-next-line
+        [])
 
     return (
         <SWRConfig
@@ -96,7 +96,7 @@ function App() {
                 <ProtectedRoute isAdmin={true} exact path='/dashboard/reviews' component={ReviewsList} />
                 <ProtectedRoute isAdmin={true} exact path='/dashboard/orders/:id' component={UpdateOrder} />
                 <ProtectedRoute isAdmin={true} exact path='/dashboard/products/new' component={CreateProduct} />
-                <ProtectedRoute isAdmin={true} exact path='/dashboard/products/:id' component={UpdateProduct} />
+                <ProtectedRoute isAdmin={true} exact path='/dashboard/products/update/:id' component={UpdateProduct} />
                 <ProtectedRoute isAdmin={true} exact path='/dashboard/users/:id' component={UpdateUser} />
 
                 <Footer />

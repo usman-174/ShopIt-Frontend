@@ -18,7 +18,6 @@ const ProductListAdmin = () => {
         // eslint-disable-next-line
         [])
     const deletAdminProduct = async (id: string) => {
-        console.log("Dlete ProductId=", id);
 
         const { data } = await axios.delete("/products/admin/" + id)
         if (data?.success) {
@@ -81,7 +80,7 @@ const ProductListAdmin = () => {
                 numOfReviews: product.numOfReviews,
                 seller: product.seller,
                 actions: <Flex alignItems="Center" justifyContent="space-around" >
-                    <Link to={`/dashboard/products/${product._id}`}>
+                    <Link to={`/dashboard/products/update/${product._id}`}>
                         <Icon textAlign="center" as={EditIcon} color="teal.700" w={9} h={9} />
                     </Link>
 
