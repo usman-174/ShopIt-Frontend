@@ -19,7 +19,6 @@ const UsersList = () => {
         // eslint-disable-next-line
         [])
     const deleteAdminUser = async (id: string) => {
-        console.log("Dlete UserId=", id);
 
         const { data } = await axios.delete("/users/admin/user/" + id)
         if (data?.success) {

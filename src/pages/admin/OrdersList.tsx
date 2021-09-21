@@ -19,7 +19,6 @@ const OrdersList = () => {
         // eslint-disable-next-line
         [])
     const deleteAdminOrder = async (id: string) => {
-        console.log("Dlete ProductId=", id);
 
         const { data } = await axios.delete("/orders/admin/" + id)
         if (data?.success) {

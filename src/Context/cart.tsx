@@ -65,17 +65,14 @@ const reducer = (state: State = initialState, { type, payload, toast }) => {
             }
         case 'REMOVE_FROM_CART':
             const filtered = state.cartItems?.filter(i => i.product !== payload)
-            console.log(filtered);
 
             const data = {
                 cartItems: filtered
             }
             if (data.cartItems?.length) {
-                console.log("Setting data");
 
                 localStorage.setItem("state", JSON.stringify(data))
             } else {
-                console.log("removing data");
                 localStorage.removeItem("state")
 
             }

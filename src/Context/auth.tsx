@@ -53,7 +53,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             const res = await Axios.get('/users/me')
             dispatch('LOGIN', res.data.user)
         } catch (err) {
-            // console.log(err)
         } finally {
             dispatch('STOP_LOADING')
         }

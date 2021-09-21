@@ -31,7 +31,6 @@ const Register = ({ history }) => {
             history.push('/')
 
         } catch (error) {
-            console.log(error);
             setLoading(false)
             toast({
                 title: "Registration Failed",

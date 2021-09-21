@@ -12,7 +12,6 @@ const ProductLayout = ({ products, keyword }: { products: ProductI[], keyword: s
 
 
             {products?.length ? products!.map((prod) => {
-                console.log("totalProducts=", prod);
 
                 return <Product id={prod._id} key={prod._id} name={prod.name} price={prod.price} ratings={prod.ratings}
                     numOfReviews={prod.numOfReviews} images={prod.images} />

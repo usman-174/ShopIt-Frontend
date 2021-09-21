@@ -27,7 +27,7 @@ const UpdateProfile = ({ user }: { user: User }) => {
 
         try {
             setLoading(true)
-            const { data } = await axios.put<AxiosResponse>("/users/update-profile", { email, name, avatar })
+            const { data } = await axios.put<AxiosResponse>("/users/update-profile", { email, name, avatar : avatar ? avatar:undefined})
             if (data?.success) {
                 dispatch('LOGIN', data?.user)
                 toast({

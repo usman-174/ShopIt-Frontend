@@ -28,8 +28,6 @@ const Shipping = ({ cart: { shippingInfo }, history }: { cart: { cartItems: cart
 
     const SubmitRegister = () => {
         if (!address?.trim() || address?.trim().length < 6) {
-            console.log(address.trim());
-            console.log("addres Length", address.trim().length);
 
             toast({
                 title: "Form Error",
