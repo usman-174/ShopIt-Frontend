@@ -1,8 +1,10 @@
 import { Box, Flex, Heading, useToast, Input, FormHelperText, FormControl, FormLabel, Button, useMediaQuery } from '@chakra-ui/react'
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAuthState } from '../Context/auth'
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ history }) => {
+    const { user } = useAuthState()
     const [isLargerThan708px] = useMediaQuery("(min-width: 708px)");
 
     const [email, setEmail] = useState("")
@@ -49,6 +51,11 @@ const ForgotPassword = () => {
         }
 
     }
+    useEffect(() => {
+        if (user) {
+            history.push("/")
+        }
+    }, [user, history])
     return (
         <Box mx="auto" my="10" h="66.4vh" w={isLargerThan708px ? "40vw" : "70vw"}>
 
