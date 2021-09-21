@@ -1,7 +1,7 @@
 import { Box, Center, Divider, Flex, FormControl, FormLabel, Heading, Select, Text, useMediaQuery } from "@chakra-ui/react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import 'rc-slider/assets/index.css'
-import { useState } from "react"
+import { useState ,useEffect} from "react"
 import Pagination from "react-js-pagination"
 import { MoonLoader } from 'react-spinners'
 import ProductLayout from "../components/product/ProductLayout"
@@ -56,6 +56,10 @@ const Home = ({ match }) => {
             <MoonLoader color='#FF6347' />
         </Center>
     }
+	useEffect(()=>{
+		revalidate()
+		//eslint-disable next line
+	},[])
     return (
 
         <Flex justifyContent='flex-start' flexDirection='column' mx='10' my='2' mb='10'>
