@@ -1,3 +1,4 @@
+import { Button } from '@chakra-ui/button'
 import Icon from '@chakra-ui/icon'
 import { ViewIcon } from '@chakra-ui/icons'
 import { Box, Center, Heading } from '@chakra-ui/layout'
@@ -8,14 +9,16 @@ import { MoonLoader } from 'react-spinners'
 import MetaData from '../components/MetaData'
 import useGetMyOrders from '../hooks/useGetMyOrders'
 
-const Orders = () => {
-    const { isValidating, success, orders, revalidate } = useGetMyOrders()
+const Orders = ({ history }) => {
+    const { isValidating, success, orders, error, revalidate } = useGetMyOrders()
     if (isValidating) {
         <Center mx="auto" textAlign="center" my="20">
             <MoonLoader color='#999' />
         </Center>
     }
-    useEffect(() => { revalidate() },
+    useEffect(() => {
+        revalidate()
+    },
         // eslint-disable-next-line
         [])
     const setOrders = () => {
@@ -55,23 +58,42 @@ const Orders = () => {
         })
         return data
     }
+    if (!success && isValidating) {
+        return <Center my='20'>
+            <MoonLoader color='#FF6347' />
+        </Center>
+    }
     return (
         <Fragment>
             <MetaData title="My Orders" />
-            {success && <Fragment>
-                <Box className="container my-5 ">
-                    <Heading textAlign="center" my="10" as="h1" fontWeight="bold" color="tomato">My Orders</Heading>
-                    <MDBDataTable
-                        data={setOrders()}
-                        hover
-                        striped
-                        bordered
-                        className="px-3"
-                    />
-                </Box>
+            <Box className="container my-5">
+                {orders?.length ?
+                    <Box className="my-5">
+                        <Heading textAlign="center" my="10" as="h1" fontWeight="bold" color="tomato">My Orders</Heading>
+                        <MDBDataTable
+                            data={setOrders()}
+                            hover
+                            striped
+                            bordered
+                            className="px-3"
+                        />
+                    </Box>
+                    :
+                    <Box className="my-5 " minH={"80vh"}>
+                        <Heading textAlign="center" my="10" as="h1"
+                            fontWeight="bold" color="tomato">
+                            {error && error.message}</Heading>
+                        <Center>
+                            <Button my="10" onClick={() => history.push("/")} textAlign="center" mx="auto" colorScheme="teal">
+                                Go Find Some Products.
+                            </Button>
+                        </Center>
+                    </Box>
 
-            </Fragment>}
+                }
+            </Box>
         </Fragment>
+
     )
 }
 

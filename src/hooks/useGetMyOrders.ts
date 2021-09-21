@@ -9,10 +9,7 @@ interface myOrdersResponse{
 }
 
 const useGetMyOrders = () => {
-    const { isValidating, data, error, mutate, revalidate } = useSWR<myOrdersResponse>(`/orders/my`,
-    {
-        revalidateOnFocus: true
-    })
+    const { isValidating, data, error, mutate, revalidate } = useSWR<myOrdersResponse>(`/orders/my`)
 return { isValidating, ...data, error, mutate, revalidate }
 }
 export default useGetMyOrders

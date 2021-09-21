@@ -14,36 +14,28 @@ const Register = ({ history }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [name, setName] = useState("")
+    const [loading, setLoading] = useState(false)
     const [previewAvatar, setPreviewAvatar] = useState<string>("/default_avatar.png")
     const [avatar, setAvatar] = useState<string>("")
     const dispatch = useAuthDispatch()
     const toast = useToast()
 
     const SubmitRegister = async () => {
-        // if (!avatar) {
-        //     toast({
-        //         title: "Profile Error",
-        //         description: "Please select a profile avatar",
-        //         status: "error",
-        //         duration: 1900,
-        //         isClosable: true,
-        //         position: 'top-right'
-        //     })
-        //     return
-        // }
+        setLoading(true)
         try {
             const { data } = await axios.post('/users/register', {
                 email, password, name, avatar
             })
+            setLoading(false)
             dispatch('LOGIN', data.user)
             history.push('/')
 
         } catch (error) {
             console.log(error);
-
+            setLoading(false)
             toast({
                 title: "Registration Failed",
-                description: error.response.data.message,
+                description: error.response.data.message || "Couldn't Register , Please try again later.",
                 status: "error",
                 duration: 1500,
                 isClosable: true,
@@ -96,7 +88,7 @@ const Register = ({ history }) => {
 
 
 
-                <Button onClick={SubmitRegister} variant='outline' colorScheme='teal' color='tomato'>
+                <Button isLoading={loading} onClick={SubmitRegister} variant='outline' colorScheme='teal' color='tomato'>
                     Register
                 </Button>
                 <Text my="2" as='p' color="tomato">Already have an account? <Link to='/login'><Text d='inline-block' color="teal">
