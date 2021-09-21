@@ -1,7 +1,7 @@
 import { SimpleGrid, Box, useMediaQuery } from "@chakra-ui/react"
 import Product from "./Product"
-
-const ProductLayout = ({ products, keyword }) => {
+import ProductI from "../../types/productI"
+const ProductLayout = ({ products, keyword }: { products: ProductI[], keyword: string }) => {
     const [isLargerThan708px] = useMediaQuery("(min-width: 708px)");
 
     return (
@@ -11,9 +11,11 @@ const ProductLayout = ({ products, keyword }) => {
 
 
 
-            {products?.length ? products!.map(prod => {
+            {products?.length ? products!.map((prod) => {
+                console.log("totalProducts=", prod);
+
                 return <Product id={prod._id} key={prod._id} name={prod.name} price={prod.price} ratings={prod.ratings}
-                    numOfReviews={prod!.numOfReviews} images={prod!.images} />
+                    numOfReviews={prod.numOfReviews} images={prod.images} />
 
             }) :
                 !products?.length &&

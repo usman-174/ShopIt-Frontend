@@ -1,7 +1,7 @@
 import { Box, Center, Divider, Flex, FormControl, FormLabel, Heading, Select, Text, useMediaQuery } from "@chakra-ui/react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import 'rc-slider/assets/index.css'
-import { useState ,useEffect} from "react"
+import { useState, useEffect } from "react"
 import Pagination from "react-js-pagination"
 import { MoonLoader } from 'react-spinners'
 import ProductLayout from "../components/product/ProductLayout"
@@ -51,12 +51,12 @@ const Home = ({ match }) => {
     if (keyword) {
         count = filteredProductsCount
     }
-    
-	useEffect(()=>{
-		revalidate()
-		// eslint-disable-next-line
-	},[])
-	if (!success && isValidating) {
+
+    useEffect(() => {
+        revalidate()
+        // eslint-disable-next-line
+    }, [])
+    if (!success && isValidating) {
         return <Center my='20'>
             <MoonLoader color='#FF6347' />
         </Center>
@@ -132,7 +132,7 @@ const Home = ({ match }) => {
                         }>PRODUCTS</Text>
                     </Center>}
                     {!isLargerThan800px && <Divider mb="2" />}
-                    <ProductLayout products={products} keyword={keyword} />
+                    <ProductLayout products={products!} keyword={keyword} />
                     {/* PAGINATION START */}
                     {
                         (resPerPage! < count!) &&
