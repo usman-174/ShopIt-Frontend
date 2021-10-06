@@ -4,7 +4,6 @@ import { useAuthState } from '../Context/auth';
 
 const Profile = ({ history }) => {
     const { user } = useAuthState()
-
     const [isLargerThan450px] = useMediaQuery("(min-width: 450px)");
 
 
@@ -33,7 +32,7 @@ const Profile = ({ history }) => {
                         </Box>
                         <UpdatePassword />
                         <br />
-                        <Button my="2" color="white" colorScheme='messenger' variant='solid'>My Orders</Button>
+                        <Button my="2" color="white" onClick={()=>history.push("/")} colorScheme='messenger' variant='solid'>My Orders</Button>
 
                     </Box>
 
