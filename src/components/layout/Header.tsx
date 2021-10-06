@@ -21,7 +21,7 @@ function Header() {
         try {
             await axios.get('users/logout')
             dispatch("LOGOUT")
-            window.location.reload()
+            history.push("/")
         } catch ({ response }) {
             toast({
                 title: "Logout Failed",
